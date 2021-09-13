@@ -1,10 +1,12 @@
 // Assignment code here
 var numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+// prettier-ignore
 var lowerCase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
 var upperCase = lowerCase.map(function (x) {
   return x.toUpperCase();
 });
-var specialcharacters = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
+// prettier-ignore
+var specialCharacters = [" ", "!", "\"", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", ".", "/", ":", ";", "<", "=", ">", "?", "@", "[", "\\", "]", "^", "_", "`", "{", "|", "}", "~"]
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
@@ -65,8 +67,33 @@ function generatePassword() {
     if (allowedcharacterstypes.length > 0) {
       break;
     }
-    alert ("You must select at least one character type!")
+    alert("You must select at least one character type!");
   }
+  // Build an array of permitted characters based on user selected criteria
+  var permittedcharacters = [];
+  if (allowedcharacterstypes.includes("lowercase")) {
+    permittedcharacters = permittedcharacters.concat(lowerCase);
+  }
+  if (allowedcharacterstypes.includes("uppercase")) {
+    permittedcharacters = permittedcharacters.concat(upperCase);
+  }
+  if (allowedcharacterstypes.includes("numeric")) {
+    permittedcharacters = permittedcharacters.concat(numbers);
+  }
+  if (allowedcharacterstypes.includes("special characters")) {
+    permittedcharacters = permittedcharacters.concat(specialCharacters);
+  }
+  console.log(permittedcharacters);
+  //  Loop to randomly generate password from permitted characters
+  var password = "";
+  for (var i = 0; i < passwordlength; i++) {
+    var randomcharacter =
+      permittedcharacters[
+        Math.floor(Math.random() * permittedcharacters.length)
+      ];
+    password += randomcharacter;
+  }
+  return password;
 }
 
 // Add event listener to generate button
