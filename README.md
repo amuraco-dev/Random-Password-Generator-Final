@@ -23,4 +23,5 @@ Repository Link: https://github.com/amuraco-dev/Random-Password-Generator-Final
 
 URL Link: https://amuraco-dev.github.io/Random-Password-Generator-Final/
 
-![Project Screenshot](https://ibb.co/72XCqxJ)
+![Project Screenshot](https://i.ibb.co/ZWVX0R6/Screen-Shot-2021-09-13-at-12-36-44-PM.png)
+
